@@ -1,12 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+  body {
+    height: 100%;
+    background-color: #c0bfc3;
+  }
+  #start {
+    width: 50px;
+    height: 30px;
+    background-color: rgb(146 102 251);
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 8px;
+    border: 2px solid rgb(52, 52, 52);
+  }
+
+  #stop {
+    width: 50px;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 30px;
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+    border: 2px solid rgb(52, 52, 52);
+  }
+
+  #wrap {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    width: 240px;
+    justify-content: center;
+  }
+</style>
+
 <body>
-  <div>aoidhjwqiondfoiwqn</div>
+  <script src="https://unpkg.com/lucky-canvas@1.7.25"></script>
+  <div id="my-lucky"></div>
+  <div id="wrap">
+    <div id="start">开始</div>
+    <div id="stop">暂停</div>
+  </div>
+  <script>
+    const myLucky = new LuckyCanvas.SlotMachine('#my-lucky', {
+      width: '240px',
+      height: '180px',
+      blocks: [
+        { padding: '10px', background: '#869cfa', borderRadius: 10 },
+        { padding: '10px', background: '#e9e8fe', borderRadius: 10 },
+      ],
+      slots: [
+        { order: [0, 1, 2,3,4] },
+        { order: [2, 1, 0,4,3] },
+        { order: [1, 2, 0,3,4] },
+      ],
+      prizes: [
+        {
+          borderRadius: '10px',
+          background: '#4118bb',
+          fonts: [{
+            text: '奖励奶茶一杯',
+            top: 10,
+            fontSize: 15,
+            fontColor: '#ffffff'
+          }]
+        },
+        {
+          borderRadius: '10px',
+          background: '#8c9eed',
+          fonts: [{
+            text: '喜提洗碗一天',
+            top: 10,
+            fontSize: 15,
+            fontColor: '#ffffff'
+          }]
+        },
+        {
+          borderRadius: '10px',
+          background: '#6980e9',
+          fonts: [{
+            text: '喜提洗袜子一天',
+            top: 10,
+            fontSize: 15,
+            fontColor: '#ffffff'
+          }]
+        },
+        {
+          borderRadius: '10px',
+          background: '#6980e9',
+          fonts: [{
+            text: '帮俊哥按摩15分钟',
+            top: 10,
+            fontSize: 15,
+            fontColor: '#ffffff'
+          }]
+        },
+        {
+          borderRadius: '10px',
+          background: '#6980e9',
+          fonts: [{
+            text: '奖励大餐一顿',
+            top: 10,
+            fontSize: 18,
+            fontColor: '#ffffff'
+          }]
+        }
+      ],
+      defaultStyle: {
+        background: '#b8c5f2'
+      },
+      defaultConfig: {
+        rowSpacing: '10px',
+        colSpacing: '10px'
+      }
+    })
+    document.querySelector('#start').addEventListener('click', () => {
+      myLucky.play();
+    })
+    document.querySelector('#stop').addEventListener('click', () => {
+
+      const result = Math.floor(Math.random() * (4 - 0)) + 0;
+
+      myLucky.stop(result);
+    })
+  </script>
 </body>
+
 </html>
