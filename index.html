@@ -10,131 +10,174 @@
 <style>
   body {
     display: flex;
-    height: 100%;
-    background-color: #c0bfc3;
+    height: 100vh;
     flex-direction: column;
     align-items: center;
-  }
-
-  #start {
-    width: 50px;
-    height: 30px;
-    background-color: rgb(146 102 251);
-    text-align: center;
-    line-height: 30px;
-    color: #fff;
-    border-radius: 8px;
-    border: 2px solid rgb(52, 52, 52);
-  }
-
-  #stop {
-    width: 50px;
-    height: 30px;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-    line-height: 30px;
-    color: rgb(0, 0, 0);
-    border-radius: 8px;
-    border: 2px solid rgb(52, 52, 52);
-  }
-
-  #wrap {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-    width: 240px;
-    justify-content: center;
+    background: url('./img/bg.jpg') center / cover no-repeat;
   }
 </style>
 
 <body>
   <script src="https://unpkg.com/lucky-canvas@1.7.25"></script>
   <div id="my-lucky"></div>
-  <div id="wrap">
-    <div id="start">开始</div>
-    <div id="stop">暂停</div>
-  </div>
   <script>
-    const myLucky = new LuckyCanvas.SlotMachine('#my-lucky', {
-      width: '240px',
-      height: '180px',
+    const myLucky = new LuckyCanvas.LuckyGrid('#my-lucky', {
+      width: '300px',
+      height: '300px',
       blocks: [
         { padding: '10px', background: '#869cfa', borderRadius: 10 },
         { padding: '10px', background: '#e9e8fe', borderRadius: 10 },
       ],
-      slots: [
-        { order: [0, 1, 2, 3, 4] },
-        { order: [2, 1, 0, 4, 3] },
-        { order: [1, 2, 0, 3, 4] },
-      ],
       prizes: [
         {
-          borderRadius: '10px',
-          background: '#4118bb',
-          fonts: [{
-            text: '奖励奶茶一杯',
-            top: 10,
-            fontSize: 15,
-            fontColor: '#ffffff'
+          x: 0,
+          y: 0,
+          range: 40,
+          imgs: [{
+            src: './img/tea.png',
+            width: '100%',
+            height: '100%'
+          }, {
+            src: './img/tea.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
+          },]
+        },
+        {
+          x: 0,
+          y: 1,
+          range: 40,
+          imgs: [{
+            src: './img/eat.png',
+            width: '100%',
+            height: '100%'
+          },
+          {
+            src: './img/eat.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
           }]
         },
         {
-          borderRadius: '10px',
-          background: '#8c9eed',
-          fonts: [{
-            text: '喜提洗碗一天',
-            top: 10,
-            fontSize: 15,
-            fontColor: '#ffffff'
+          x: 0,
+          y: 2,
+          range: 40,
+          imgs: [{
+            src: './img/banli.png',
+            width: '100%',
+            height: '100%'
+          },{
+            src: './img/banli.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
           }]
         },
         {
-          borderRadius: '10px',
-          background: '#6980e9',
-          fonts: [{
-            text: '喜提洗袜子一天',
-            top: 10,
-            fontSize: 15,
-            fontColor: '#ffffff'
+          x: 1,
+          y: 0,
+          range: 40,
+          imgs: [{
+            src: './img/movie.png',
+            width: '100%',
+            height: '100%'
+          },
+          {
+            src: './img/movie.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
           }]
         },
         {
-          borderRadius: '10px',
-          background: '#6980e9',
-          fonts: [{
-            text: '帮俊哥按摩15分钟',
-            top: 10,
-            fontSize: 15,
-            fontColor: '#ffffff'
+          x: 1,
+          y: 2,
+          range: 40,
+          imgs: [{
+            src: './img/spa.png',
+            width: '100%',
+            height: '100%'
+          },
+          {
+            src: './img/spa.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
           }]
         },
         {
-          borderRadius: '10px',
-          background: '#6980e9',
-          fonts: [{
-            text: '奖励大餐一顿',
-            top: 10,
-            fontSize: 18,
-            fontColor: '#ffffff'
+          x: 2,
+          y: 0,
+          range: 40,
+          imgs: [{
+            src: './img/travel.png',
+            width: '100%',
+            height: '100%'
+          },
+          {
+            src: './img/travel.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
+          }]
+        },
+        {
+          x: 2,
+          y: 1,
+          range: 40,
+          imgs: [{
+            src: './img/sese.png',
+            width: '100%',
+            height: '100%'
+          },
+          {
+            src: './img/sese.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
+          }]
+        },
+        {
+          x: 2,
+          y: 2,
+          range: 10,
+          imgs: [{
+            src: './img/any.png',
+            width: '100%',
+            height: '100%'
+          },
+          {
+            src: './img/any.png',
+            activeSrc: './img/checked.png',
+            width: '100%',
+            height: '100%'
           }]
         }
       ],
+      buttons: [
+        {
+          x: 1, y: 1,
+          imgs: [{
+            src: './img/go-btn.png',
+            width: '100%',
+            height: '100%'
+          }]
+        },
+      ],
       defaultStyle: {
-        background: '#b8c5f2'
       },
-      defaultConfig: {
-        rowSpacing: '10px',
-        colSpacing: '10px'
+      start: function () {
+        // 开始游戏
+        myLucky.play()
+        // 使用定时器模拟接口
+        setTimeout(() => {
+          // 结束游戏, 并抽第0号奖品
+          const result = Math.floor(Math.random() * 8);
+          myLucky.stop()
+        }, 3000)
       }
-    })
-    document.querySelector('#start').addEventListener('click', () => {
-      myLucky.play();
-    })
-    document.querySelector('#stop').addEventListener('click', () => {
-
-      const result = Math.floor(Math.random() * (4 - 0)) + 0;
-
-      myLucky.stop(result);
     })
   </script>
 </body>
